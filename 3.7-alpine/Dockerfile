@@ -1,0 +1,9 @@
+FROM python:3.7-alpine
+
+ARG OPENCV
+
+RUN apk add --no-cache --virtual .build-deps build-base cmake openssl-dev linux-headers \
+  && pip install --no-cache-dir scikit-build \
+  && pip install --no-cache-dir ${OPENCV} \
+  && pip uninstall scikit-build \
+  && apk del .build-deps
