@@ -34,8 +34,8 @@ jobs:
         with:
           builder: ${{ steps.docker_builder.outputs.name }}
           file: "{{ matrix.python}}/Dockerfile"
-          build-args: "OPENCV=opencv-python~={{ matrix.opencv }}"
-          tags: fishead/opencv-python:{{ matrix.python }}-{{ matrix.opencv-python }}
+          build-args: "OPENCV=opencv-python~=${{ matrix.opencv }}"
+          tags: fishead/opencv-python:${{ matrix.python }}-${{ matrix.opencv-python }}
           pull: true
           push: true
 
@@ -45,7 +45,7 @@ jobs:
         with:
           builder: ${{ steps.docker_builder.outputs.name }}
           file: "{{ matrix.python}}/Dockerfile"
-          build-args: "OPENCV=opencv-python-headless~={{ matrix.opencv }}"
-          tags: fishead/opencv-python:{{ matrix.python }}-{{ matrix.opencv-python }}-headless
+          build-args: "OPENCV=opencv-python-headless~=${{ matrix.opencv }}"
+          tags: fishead/opencv-python:${{ matrix.python }}-${{ matrix.opencv-python }}-headless
           pull: true
           push: true
